@@ -3,14 +3,15 @@
   const scissors = 'nożyce'
   function playGame(playerInput) {
   clearMessages()
-  let move = function() {
-    if (1) {
+  function getMoveName(argMoveId) {
+    if (argMoveId == 1) {
       return rock;
-    } else if (2) {
+    } else if (argMoveId == 2) {
       return paper;
-    } else if (3) {
+    } else if (argMoveId == 3) {
       return scissors;
     }
+
     printMessage('Nie znam ruchu o id ' + argMoveId + '.');
     return 'nieznany ruch';
   }
@@ -18,13 +19,13 @@
   function displayResult(argComputerMove, argPlayerMove) {
     console.log('moves:', argComputerMove, argPlayerMove);
     printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
-    const win = 'Ty wygrywasz!'
+
     if (argComputerMove == rock && argPlayerMove == paper) {
-      printMessage(win);
+      printMessage('Ty wygrywasz!');
     } else if (argComputerMove == paper && argPlayerMove == scissors) {
-      printMessage(win);
+      printMessage('Ty wygrywasz!');
     } else if (argComputerMove == scissors && argPlayerMove == rock) {
-      printMessage(win);
+      printMessage('Ty wygrywasz!');
     } else if (argComputerMove == argPlayerMove) {
       printMessage('Mamy remis!')
     } else {
@@ -33,9 +34,9 @@
   }
   const max = 3;
   const min = 1;
-  const randomNumber = Math.floor(Math.random() * max+min);
+  let randomNumber = Math.floor(Math.random() * max+min);
   console.log('Wylosowana liczba to: ' + randomNumber);
-  let computerMove = move;
+  let computerMove = getMoveName(randomNumber);
   /*if(randomNumber == 1){
     computerMove = 'kamień';
   } else if (randomNumber == 2){
@@ -46,7 +47,7 @@
   printMessage('Mój ruch to: ' + computerMove);
   /*let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');*/
   console.log('Gracz wpisał: ' + playerInput);
-  let playerMove = move(playerInput);
+  let playerMove = getMoveName(playerInput);
   /*if(playerInput == '1'){
     playerMove = 'kamień';
   } else if(playerInput =='2') {
