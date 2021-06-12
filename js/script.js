@@ -1,12 +1,15 @@
-function playGame(playerInput) {
+{ const rock = 'kamień'
+  const paper = 'papier'
+  const scissors = 'nożyce'
+  function playGame(playerInput) {
   clearMessages()
   function getMoveName(argMoveId) {
     if (argMoveId == 1) {
-      return 'kamień';
+      return rock;
     } else if (argMoveId == 2) {
-      return 'papier';
+      return paper;
     } else if (argMoveId == 3) {
-      return 'nożyce';
+      return scissors;
     }
 
     printMessage('Nie znam ruchu o id ' + argMoveId + '.');
@@ -17,11 +20,11 @@ function playGame(playerInput) {
     console.log('moves:', argComputerMove, argPlayerMove);
     printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
 
-    if (argComputerMove == 'kamień' && argPlayerMove == 'papier') {
+    if (argComputerMove == rock && argPlayerMove == paper) {
       printMessage('Ty wygrywasz!');
-    } else if (argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
+    } else if (argComputerMove == paper && argPlayerMove == scissors) {
       printMessage('Ty wygrywasz!');
-    } else if (argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
+    } else if (argComputerMove == scissors && argPlayerMove == rock) {
       printMessage('Ty wygrywasz!');
     } else if (argComputerMove == argPlayerMove) {
       printMessage('Mamy remis!')
@@ -29,7 +32,9 @@ function playGame(playerInput) {
       printMessage('Ty przegrywasz!');
     }
   }
-  let randomNumber = Math.floor(Math.random() * 3 + 1);
+  const max = 3;
+  const min = 1;
+  let randomNumber = Math.floor(Math.random() * max+min);
   console.log('Wylosowana liczba to: ' + randomNumber);
   let computerMove = getMoveName(randomNumber);
   /*if(randomNumber == 1){
@@ -62,3 +67,4 @@ document.getElementById('play-paper').addEventListener('click', function(){
 document.getElementById('play-scissors').addEventListener('click', function(){
   playGame(3)('Zagrałeś nożyce');
 });
+}
