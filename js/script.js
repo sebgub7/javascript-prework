@@ -16,16 +16,16 @@
     return 'nieznany ruch';
   }
 
-  function displayResult(argComputerMove, argPlayerMove) {
+  const result = function(argComputerMove, argPlayerMove) {
     console.log('moves:', argComputerMove, argPlayerMove);
     printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
-
+    const win = 'Ty wygrywasz!'
     if (argComputerMove == rock && argPlayerMove == paper) {
-      printMessage('Ty wygrywasz!');
+      printMessage(win);
     } else if (argComputerMove == paper && argPlayerMove == scissors) {
-      printMessage('Ty wygrywasz!');
+      printMessage(win);
     } else if (argComputerMove == scissors && argPlayerMove == rock) {
-      printMessage('Ty wygrywasz!');
+      printMessage(win);
     } else if (argComputerMove == argPlayerMove) {
       printMessage('Mamy remis!')
     } else {
@@ -56,7 +56,7 @@
     playerMove = 'nożyce';
   }*/
   printMessage('Twój ruch to: ' + playerMove);
-  displayResult(computerMove, playerMove);
+  result(computerMove, playerMove);
 }
 document.getElementById('play-rock').addEventListener('click', function(){
   playGame(1)('Zagrałeś kamień');
